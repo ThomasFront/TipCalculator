@@ -1,0 +1,305 @@
+@use './utilities/colors' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.6rem;
+	max-height: 100vh;
+	color: $text-color;
+	background-color: $background;
+}
+
+.tip-window {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	&__top {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		min-height: 25vh;
+		width: 100%;
+		background-image: url('../../dist/img/money.jpg');
+		background-size: cover;
+		background-position: center;
+		z-index: 0;
+		text-transform: uppercase;
+		box-shadow: 0 0 5px black;
+
+		&-h1 {
+			margin-bottom: 0.1em;
+			font-size: 2.5rem;
+			letter-spacing: 1px;
+		}
+
+		&-paragraf {
+			font-size: 1.4rem;
+		}
+
+		&-shadow {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			background-color: $background-shadow;
+			z-index: -1;
+		}
+	}
+
+	&__bottom {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		margin-top: 3em;
+		width: 80%;
+		color: $text-bottom-color;
+
+		&-error {
+			display: none;
+			text-align: center;
+			color: $error-color;
+		}
+
+		&-result {
+			display: none;
+			text-align: center;
+
+			&__span {
+				font-weight: bold;
+			}
+		}
+
+		&-button {
+			border-radius: 6px;
+			margin: 0.6em auto 2em;
+			padding: 1em 1.5em;
+			width: 60%;
+			border: none;
+			color: $text-color;
+			background-color: $button;
+			transition: background-color 0.3s;
+			cursor: pointer;
+		}
+
+		&-button:hover {
+			background-color: $hover;
+		}
+	}
+
+	label {
+		margin-bottom: 0.2em;
+	}
+
+	input,
+	select {
+		margin-bottom: 1.6em;
+		padding: 0.5em;
+		border: none;
+		border-radius: 6px;
+		width: 100%;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	input:focus,
+	select:focus {
+		outline: 2px solid $background-shadow;
+	}
+}
+
+// MEDIA
+
+@media (min-width: 375px) {
+	.tip-window {
+		&__top {
+			&-h1 {
+				font-size: 3.4rem;
+			}
+			&-paragraf {
+				font-size: 1.2rem;
+			}
+		}
+
+		&__bottom {
+			&-error,
+			&-result {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	label {
+		font-size: 1.8rem;
+	}
+
+	input,
+	select {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 414px) {
+	.tip-window {
+		&__top {
+			&-h1 {
+				font-size: 4rem;
+			}
+			&-paragraf {
+				font-size: 1.4rem;
+			}
+		}
+
+		&__bottom {
+			&-error,
+			&-result {
+				font-size: 2.2rem;
+			}
+		}
+	}
+
+	label {
+		font-size: 2rem;
+	}
+
+	input,
+	select {
+		font-size: 1.7rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.tip-window {
+		&__top {
+			&-h1 {
+				font-size: 7rem;
+			}
+			&-paragraf {
+				font-size: 2.5rem;
+			}
+		}
+
+		&__bottom {
+			&-error,
+			&-result {
+				font-size: 3rem;
+			}
+
+			&-result {
+				margin-bottom: 1em;
+			}
+
+			&-error {
+				margin-bottom: 1em;
+			}
+
+			&-button {
+				padding: 1em;
+				font-size: 2.4rem;
+			}
+		}
+	}
+
+	label {
+		font-size: 3.2rem;
+	}
+
+	input,
+	select {
+		font-size: 2.5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.tip-window {
+		&__top {
+			&-h1 {
+				font-size: 9rem;
+			}
+			&-paragraf {
+				font-size: 2.9rem;
+			}
+		}
+
+		&__bottom {
+			&-error,
+			&-result {
+				font-size: 4.5rem;
+			}
+			&-button {
+				font-size: 3rem;
+				padding: 1.8em;
+			}
+		}
+	}
+
+	label {
+		font-size: 4.2rem;
+	}
+
+	input,
+	select {
+		font-size: 3.2rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+	.tip-window {
+		width: 800px;
+		background-color: $background-mobile;
+		border: 1px solid black;
+		box-shadow: 0 0 20px black;
+		border-radius: 8px;
+
+		&__top {
+			&-h1 {
+				font-size: 6rem;
+			}
+			&-paragraf {
+				font-size: 2rem;
+			}
+		}
+
+		&__bottom {
+			&-error,
+			&-result {
+				font-size: 2rem;
+			}
+
+			&-button {
+				font-size: 2rem;
+				padding: 1em;
+			}
+		}
+	}
+	label {
+		font-size: 2rem;
+	}
+
+	input,
+	select {
+		font-size: 2rem;
+	}
+}
