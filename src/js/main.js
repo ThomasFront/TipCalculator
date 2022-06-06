@@ -10,6 +10,9 @@ const checkFields = () => {
 	if (amount.value !== '' && people.value !== '' && tip.value !== '0') {
 		convert()
 		error.style.display = 'none'
+		amount.value = ''
+		people.value = ''
+		tip.value = '0'
 	} else {
 		error.style.display = 'block'
 		result.style.display = 'none'
